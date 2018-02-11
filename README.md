@@ -1,2 +1,2 @@
 # wwlaw
-improving presentation of law documents
+Improving the presentation of laws
