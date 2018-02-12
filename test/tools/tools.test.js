@@ -1,5 +1,5 @@
 var assert = require('assert')
-var tools = require('../parser/tools');
+var tools = require('../../parser/tools');
 
 describe('tools', function() {
 

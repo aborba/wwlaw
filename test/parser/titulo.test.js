@@ -1,5 +1,5 @@
 var assert = require('assert')
-var Titulo = require('../parser/titulo');
+var Titulo = require('../../parser/titulo');
 
 describe('Titulo', function() {
 
