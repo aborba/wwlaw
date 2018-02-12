@@ -192,3 +192,4 @@ Article.prototype.setEpigraph = function(line) {if (line) this.epigraph = line }
 Article.prototype.addInner = function(line) {if (line && this.lines) this.lines.push(typeof line === 'string' ? new Line(line) : line) }
 Article.prototype.addComment = function(line) {if (line && typeof line === 'string' && this.comments) this.comments.push(line) }
 
+module.exports=Parte
