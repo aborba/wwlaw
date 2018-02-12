@@ -1,6 +1,3 @@
-import { isRoman } from './tools'
-import { isNumeral } from './tools'
-
 var tools = require('./tools')
 
 String.prototype.clean = function() {
@@ -25,13 +22,13 @@ sectionTypes['Subseccao'] = ['subseccao','subsecção','sub-seccao','sub-secçã
 sectionTypes['Artigo'] = ['artigo']
 
 var numberTypes = []
-numberTypes['Livro'] = isRoman
-numberTypes['Parte'] = isRoman
-numberTypes['Titulo'] = isRoman
-numberTypes['Capitulo'] = isRoman
-numberTypes['Seccao'] = isRoman
-numberTypes['Subseccao'] = isRoman
-numberTypes['Artigo'] = isNumeral
+numberTypes['Livro'] = tools.isRoman
+numberTypes['Parte'] = tools.isRoman
+numberTypes['Titulo'] = tools.isRoman
+numberTypes['Capitulo'] = tools.isRoman
+numberTypes['Seccao'] = tools.isRoman
+numberTypes['Subseccao'] = tools.isRoman
+numberTypes['Artigo'] = tools.isNumeral
 
 function Section (textLine, layer) {
 	if (! textLine || typeof textLine !== 'string' || textLine.isEmpty()) throw new Error('Section: textLine not supplied')
