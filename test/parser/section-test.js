@@ -2,9 +2,9 @@ var assert = require('assert')
 var Parte = require('../../parser/section');
 
 describe('Section', function() {
-
+    
     var parte = new Section('Parte I', 'Parte')
-
+    
     describe('#Section("Parte I", "Parte")', function() {
         it('should return values for "Parte I" and "undefined" for epigraph', function() {
             assert.equal(parte.layer, 'Parte')
@@ -13,7 +13,7 @@ describe('Section', function() {
             assert.equal(typeof parte.epigraph, 'undefined')
         })
     })
-
+    
     var parte2 = new Section('Parte I Epígrafe da parte 1', 'Parte')
     
     describe('#Section("Parte I Epígrafe da parte 1", "Parte")', function() {
@@ -42,17 +42,17 @@ describe('Section', function() {
             assert.equal(Parte.is('Parte I'), true)
         })
     })
-   
+    
     describe('#Parte.is(" paRte ii ")', function() {
         it('should return true for " paRte ii "', function() {
             assert.equal(Parte.is(' paRte ii '), true)
         })
     })
-   
+    
     describe('#Parte.is("Parte 1")', function() {
         it('should return false for "Parte 1"', function() {
             assert.equal(Parte.is('Parte 1'), false)
         })
     })
-   */
+    */
 })
