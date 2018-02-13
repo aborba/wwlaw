@@ -1,14 +1,6 @@
+require('./prototypeExtensions')
+
 var tools = require('./tools')
-
-String.prototype.clean = function() {
-	return this.trim().replace(/[\s\t]+/,' ')
-}
-
-String.prototype.isEmpty = function(value) {
-	if (this.length === 0) return true
-	var cleanString = this.clean();
-	return cleanString === '' || cleanString === ' '
-}
 
 var layers = ['Livro','Parte','Titulo','Capitulo','Seccao','Subseccao','Artigo']
 

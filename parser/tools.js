@@ -1,4 +1,4 @@
-Array.prototype.contains = function(obj) {return this.indexOf(obj) > -1 }
+require('./prototypeExtensions')
 
 exports.isRoman = (value) => {
     if (!value) return false
@@ -8,6 +8,15 @@ exports.isRoman = (value) => {
 exports.isNumeral = (value) => {
     if (!value) return false
     return (/\d+\.?[ºª]/).test(value)
+}
+
+exports.isOfType = (value, tokens, isType) => { // "Parte I", ["parte"], isRoman
+if (! value || typeof value !== 'string') return false
+var parts = value.clean().split(' ')
+var tokensLc = typeof tokens === 'string' ? [(tokens.toLowerCase())] : tokens.map(function(val) {return val.toLowerCase(); });
+return parts.length >= 2
+    && tokensLc.contains(parts[0].toLowerCase())
+    && isType(parts[1])
 }
 
 exports.roman2arabic = (value) => {
@@ -24,13 +33,4 @@ exports.roman2arabic = (value) => {
 		default: return 0;
 	}
 	return res + M + C + X + I;
-}
-
-exports.isOfType = (value, tokens, isType) => { // "Parte I", ["parte"], isRoman
-if (! value || typeof value !== 'string') return false
-var parts = value.clean().split(' ')
-var tokensLc = typeof tokens === 'string' ? [(tokens.toLowerCase())] : tokens.map(function(val) {return val.toLowerCase(); });
-return parts.length >= 2
-    && tokensLc.contains(parts[0].toLowerCase())
-    && isType(parts[1])
 }
