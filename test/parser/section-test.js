@@ -1,5 +1,5 @@
 var assert = require('assert')
-var Parte = require('../../parser/section');
+var Section = require('../../parser/section');
 
 describe('Section', function() {
     
