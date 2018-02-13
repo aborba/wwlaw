@@ -10,6 +10,7 @@ exports.isNumeral = (value) => {
     return (/\d+\.?[ºª]/).test(value)
 }
 
+// To be replaced by checkType
 exports.isOfType = (value, tokens, isType) => { // "Parte I", ["parte"], isRoman
 if (! value || typeof value !== 'string') return false
 var parts = value.clean().split(' ')
@@ -17,6 +18,17 @@ var tokensLc = typeof tokens === 'string' ? [(tokens.toLowerCase())] : tokens.ma
 return parts.length >= 2
     && tokensLc.contains(parts[0].toLowerCase())
     && isType(parts[1])
+}
+
+exports.checkType = (value, parameters) => { // "Parte I", {tokens:["parte"], numbering:isRoman}
+if (! value || typeof value !== 'string') return false
+if (! parameters || ! parameters.tokens || ! parameters.numbering) return false
+var parts = value.clean().split(' ')
+var tokens = parameters.tokens
+var tokensLc = typeof tokens === 'string' ? [(tokens.toLowerCase())] : tokens.map(function(val) {return val.toLowerCase(); });
+return parts.length >= 2
+    && tokensLc.contains(parts[0].toLowerCase())
+    && parameters.numbering(parts[1])
 }
 
 exports.roman2arabic = (value) => {
