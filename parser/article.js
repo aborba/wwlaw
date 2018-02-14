@@ -1,5 +1,5 @@
 var HeaderSection = require('./headerSection')
-var inspect = require('util').inspect
+var tools = require('./tools')
 
 class Article extends HeaderSection {
 
@@ -16,7 +16,11 @@ class Article extends HeaderSection {
 		}
 		super.add(obj)
 	}
+	
+}
 
+Article.is = (value) => {
+	return tools.checkType(value, {tokens:'artigo', numbering:tools.isNumeral} )
 }
 
 module.exports = Article

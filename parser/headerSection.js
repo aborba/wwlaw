@@ -2,35 +2,35 @@ require('./prototypeExtensions')
 
 var tools = require('./tools')
 
-var layers = ['Livro','Parte','Titulo','Capitulo','Seccao','Subseccao','Artigo']
+var types = ['book','part','title','chapter','section','subsection','article']
 
-var sectionTypes = []
-sectionTypes['Livro'] = ['livro']
-sectionTypes['Parte'] = ['parte']
-sectionTypes['Titulo'] = ['titulo','título']
-sectionTypes['Capitulo'] = ['capitulo','capítulo']
-sectionTypes['Seccao'] = ['seccao','secção']
-sectionTypes['Subseccao'] = ['subseccao','subsecção','sub-seccao','sub-secção']
-sectionTypes['Artigo'] = ['artigo']
+var headerTypes = []
+headerTypes['book'] = ['livro']
+headerTypes['part'] = ['parte']
+headerTypes['title'] = ['titulo','título']
+headerTypes['chapter'] = ['capitulo','capítulo']
+headerTypes['section'] = ['seccao','secção']
+headerTypes['subsection'] = ['subseccao','subsecção','sub-seccao','sub-secção']
+headerTypes['article'] = ['artigo']
 
 var numberTypes = []
-numberTypes['Livro'] = tools.isRoman
-numberTypes['Parte'] = tools.isRoman
-numberTypes['Titulo'] = tools.isRoman
-numberTypes['Capitulo'] = tools.isRoman
-numberTypes['Seccao'] = tools.isRoman
-numberTypes['Subseccao'] = tools.isRoman
-numberTypes['Artigo'] = tools.isNumeral
+numberTypes['book'] = tools.isRoman
+numberTypes['part'] = tools.isRoman
+numberTypes['title'] = tools.isRoman
+numberTypes['chapter'] = tools.isRoman
+numberTypes['section'] = tools.isRoman
+numberTypes['subsection'] = tools.isRoman
+numberTypes['article'] = tools.isNumeral
 
 class HeaderSection {
 
-	constructor(textLine, layer) {
+	constructor(textLine, type) {
 		if (! textLine || typeof textLine !== 'string' || textLine.isEmpty()) throw new Error('HeaderSection: textLine not supplied')
-		if (! layer || typeof layer !== 'string' || layer.isEmpty()) throw new Error('HeaderSection: layer not supplied')
-		this.layer = layer.clean()
+		if (! type || typeof type !== 'string' || type.isEmpty()) throw new Error('HeaderSection: type not supplied')
+		this.type = type.clean()
 		textLine = textLine.clean()
 		var parts = textLine.split(' ', 2)
-		if (parts.length < 2) throw new Error('HeaderSection/' + this.layer + ': ' + 'Invalid parameter textLine')
+		if (parts.length < 2) throw new Error('HeaderSection/' + this.type + ': ' + 'Invalid parameter textLine')
 		this.type = parts[0]
 		this.nr = parts[1]
 		this.separator = ''
@@ -39,6 +39,8 @@ class HeaderSection {
 		this.epigraph = remain
 		this.inner = []
 	}
+
+	getType() { return type }
 
 	add(obj) {
 		if (!obj) return
@@ -51,16 +53,6 @@ class HeaderSection {
 		this.inner.push(obj)
 	}
 
-	accepts(line) {
-		return true
-	}
-	
-}
-
-function sectionType (value) {
-	for (var layer in layers) {
-		var res = tools.checkType(value, {tokens:sectionTypes[layer],numbering:numberTypes[layer]})
-	}
 }
 
 module.exports = HeaderSection
