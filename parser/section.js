@@ -7,7 +7,7 @@ class Section extends HeaderSection {
 	}
 }
 
-Section.is = (textLine) => {
+Section.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:['secção','seccao'], numbering:tools.isRoman} )
 }
 

@@ -7,7 +7,7 @@ class Title extends HeaderSection {
 	}
 }
 
-Title.is = (textLine) => {
+Title.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:['título','titulo'], numbering:tools.isRoman} )
 }
 

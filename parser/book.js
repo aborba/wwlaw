@@ -7,7 +7,7 @@ class Book extends HeaderSection {
 	}
 }
 
-Book.is = (textLine) => {
+Book.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:'livro', numbering:tools.isRoman} )
 }
 

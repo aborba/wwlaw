@@ -7,7 +7,7 @@ class Subsection extends HeaderSection {
 	}
 }
 
-Subsection.is = (textLine) => {
+Subsection.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:['subsecção','subseccao','sub-secção','sub-seccao'], numbering:tools.isRoman} )
 }
 

@@ -7,7 +7,7 @@ class Chapter extends HeaderSection {
 	}
 }
 
-Chapter.is = (textLine) => {
+Chapter.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:['capítulo','capitulo'], numbering:tools.isRoman} )
 }
 

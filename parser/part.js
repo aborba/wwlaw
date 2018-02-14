@@ -7,7 +7,7 @@ class Part extends HeaderSection {
 	}
 }
 
-Part.is = (textLine) => {
+Part.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:'parte', numbering:tools.isRoman} )
 }
 

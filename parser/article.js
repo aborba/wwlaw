@@ -19,7 +19,7 @@ class Article extends HeaderSection {
 	
 }
 
-Article.is = (textLine) => {
+Article.matches = (textLine) => {
 	return tools.checkType(textLine, {tokens:'artigo', numbering:tools.isNumeral} )
 }
 
