@@ -1,10 +1,10 @@
-var Section = require('./section')
+var HeaderSection = require('./headerSection')
 var inspect = require('util').inspect
 
-class Article extends Section {
+class Article extends HeaderSection {
 
-	constructor(textLine, layer) {
-		super(textLine, layer)
+	constructor(textLine) {
+		super(textLine, 'article')
 		this.comments = []
 	}
 
