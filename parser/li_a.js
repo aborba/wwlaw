@@ -3,7 +3,12 @@ var tools = require('./tools')
 
 class Li_a extends ArticleContent {
 	constructor(textLine) {
-		super(nr, mark, textLine, 'li_1')
+		if (! textLine || typeof textLine !== 'string') throw new Error(CLNAME + ': textLine not supplied');
+		textLine = textLine.clean()
+		var nr = textLine.replace(/^(\w+)(.\s.*)$/, '$1')
+		var mark = textLine.replace(/^(\w+)(.)(\s.*)$/, '$2')
+		var text = textLine.replace(/^(\w+)(.\s)(.*)$/, '$3')
+		super(nr, mark, text, 'li_a')
 	}
 }
 
