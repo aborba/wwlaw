@@ -19,8 +19,8 @@ class Article extends HeaderSection {
 	
 }
 
-Article.is = (value) => {
-	return tools.checkType(value, {tokens:'artigo', numbering:tools.isNumeral} )
+Article.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:'artigo', numbering:tools.isNumeral} )
 }
 
 module.exports = Article

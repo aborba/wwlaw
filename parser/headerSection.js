@@ -22,15 +22,16 @@ numberTypes['section'] = tools.isRoman
 numberTypes['subsection'] = tools.isRoman
 numberTypes['article'] = tools.isNumeral
 
+const CLNAME = 'HeaderSection'
 class HeaderSection {
 
 	constructor(textLine, type) {
-		if (! textLine || typeof textLine !== 'string' || textLine.isEmpty()) throw new Error('HeaderSection: textLine not supplied')
-		if (! type || typeof type !== 'string' || type.isEmpty()) throw new Error('HeaderSection: type not supplied')
+		if (! textLine || typeof textLine !== 'string' || textLine.isEmpty()) throw new Error(CLNAME + ': textLine not supplied')
+		if (! type || typeof type !== 'string' || type.isEmpty()) throw new Error(CLNAME + ': type not supplied')
 		this.type = type.clean()
 		textLine = textLine.clean()
 		var parts = textLine.split(' ', 2)
-		if (parts.length < 2) throw new Error('HeaderSection/' + this.type + ': ' + 'Invalid parameter textLine')
+		if (parts.length < 2) throw new Error(CLNAME + '/' + this.type + ': ' + 'Invalid parameter textLine')
 		this.type = parts[0]
 		this.nr = parts[1]
 		this.separator = ''
@@ -40,7 +41,7 @@ class HeaderSection {
 		this.inner = []
 	}
 
-	getType() { return type }
+	getType() { return this.type }
 
 	add(obj) {
 		if (!obj) return

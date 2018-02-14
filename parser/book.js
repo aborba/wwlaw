@@ -7,8 +7,8 @@ class Book extends HeaderSection {
 	}
 }
 
-Book.is = (value) => {
-	return tools.checkType(value, {tokens:'livro', numbering:tools.isRoman} )
+Book.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:'livro', numbering:tools.isRoman} )
 }
 
 module.exports = Book

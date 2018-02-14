@@ -7,8 +7,8 @@ class Title extends HeaderSection {
 	}
 }
 
-Title.is = (value) => {
-	return tools.checkType(value, {tokens:['título','titulo'], numbering:tools.isRoman} )
+Title.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:['título','titulo'], numbering:tools.isRoman} )
 }
 
 module.exports = Title

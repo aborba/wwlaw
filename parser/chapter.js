@@ -7,8 +7,8 @@ class Chapter extends HeaderSection {
 	}
 }
 
-Chapter.is = (value) => {
-	return tools.checkType(value, {tokens:['capítulo','capitulo'], numbering:tools.isRoman} )
+Chapter.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:['capítulo','capitulo'], numbering:tools.isRoman} )
 }
 
 module.exports = Chapter

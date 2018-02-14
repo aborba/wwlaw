@@ -7,8 +7,8 @@ class Part extends HeaderSection {
 	}
 }
 
-Part.is = (value) => {
-	return tools.checkType(value, {tokens:'parte', numbering:tools.isRoman} )
+Part.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:'parte', numbering:tools.isRoman} )
 }
 
 module.exports = Part

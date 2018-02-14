@@ -7,8 +7,8 @@ class Section extends HeaderSection {
 	}
 }
 
-Section.is = (value) => {
-	return tools.checkType(value, {tokens:['secção','seccao'], numbering:tools.isRoman} )
+Section.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:['secção','seccao'], numbering:tools.isRoman} )
 }
 
 module.exports = Section

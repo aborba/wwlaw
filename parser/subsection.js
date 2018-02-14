@@ -7,8 +7,8 @@ class Subsection extends HeaderSection {
 	}
 }
 
-Subsection.is = (value) => {
-	return tools.checkType(value, {tokens:['subsecção','subseccao','sub-secção','sub-seccao'], numbering:tools.isRoman} )
+Subsection.is = (textLine) => {
+	return tools.checkType(textLine, {tokens:['subsecção','subseccao','sub-secção','sub-seccao'], numbering:tools.isRoman} )
 }
 
 module.exports = Subsection
