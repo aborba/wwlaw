@@ -45,12 +45,12 @@ function packStack(element, stack, vector) {
 
 class Dispatcher {
 
-	constructor(docOrdering, articlesOrdering, workflow, instances) {
-		this.docOrdering = docOrdering
-		this.articlesOrdering = articlesOrdering
+	constructor(sectionsVector, articlesStructure, workflow, classesMap) {
+		this.sectionsVector = sectionsVector
+		this.articlesStructure = articlesStructure
 		this.workflow = workflow
 		this.workflowStatus = 'start'
-		this.instances = instances
+		this.classesMap = classesMap
 		this.isInArticle = false
 		this.pending = ''
 		this.doc = [] // Results in doc
@@ -73,13 +73,13 @@ class Dispatcher {
 		}
 		if (this.isInArticle) {
 			var matchFound = false
-			for (var i = 0; i < this.articlesOrdering.layers.length; i++) {
-				var tag = this.articlesOrdering.layers[i]
-				var clazz = this.instances[tag]
+			for (var i = 0; i < this.articlesStructure.vector.length; i++) {
+				var tag = this.articlesStructure.vector[i]
+				var clazz = this.classesMap[tag]
 				if (! (clazz && clazz.matches && clazz.matches(line, this.lastTag))) continue
 				matchFound = true
 				var instance = new clazz(line)
-				packStack(instance, this.doc, this.articlesOrdering.layers)
+				packStack(instance, this.doc, this.articlesStructure.vector)
 				this.lastTag = instance.getNr()
 				break
 			}
@@ -88,12 +88,12 @@ class Dispatcher {
 				var workflowVector = this.workflow['article']
 				for (var i = 0; i < workflowVector.length; i++) {
 					var tag = workflowVector[i]
-					var clazz = this.instances[tag]
+					var clazz = this.classesMap[tag]
 					if (! (clazz && clazz.matches && clazz.matches(line))) continue
 					inComments = false
 					break
 				}
-				while (this.doc.length > 1 && this.articlesOrdering.layers.contains(this.doc.top().getType())) {
+				while (this.doc.length > 1 && this.articlesStructure.vector.contains(this.doc.top().getType())) {
 					var aux = this.doc.pop()
 					this.doc.top().add(aux)
 				}
@@ -105,10 +105,10 @@ class Dispatcher {
 			var workflowVector = this.workflow[this.workflowStatus]
 			for (var i = 0; i < workflowVector.length; i++) {
 				var tag = workflowVector[i]
-				var clazz = this.instances[tag]
+				var clazz = this.classesMap[tag]
 				if (! (clazz && clazz.matches && clazz.matches(line))) continue
 				var instance = new clazz(line)
-				packStack(instance, this.doc, this.docOrdering)
+				packStack(instance, this.doc, this.sectionsVector)
 				this.pending = instance.isPending()
 				this.isInArticle = instance.isInArticle()
 				if (this.isInArticle) this.lastTag = 'start'
