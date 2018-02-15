@@ -1,6 +1,6 @@
 'use strict'
 
-//var fs = require('fs') // uncomment for debug
+var fs = require('fs') // uncomment for debug
 var Dispatcher = require('./parser/dispatcher')
 
 var Book = require('./parser/book'),
@@ -28,8 +28,8 @@ function readLines(input, parse, extract, output) {
     })
     input.on('end', function() {
         if (buffer.length > 0) parse(buffer);
-        var json = extract().replace(/\,\"inner\"\:\[\]/g, '')
-        json = json.replace(/\,\"inner\"\:\[\]/g, '')
+        var json = extract()
+        json = json.replace(/\,\"inner\"\:\[\]/g, '').replace(/\,\"comments\"\:\[\]/g, '')
         output(json)
     })
 }
@@ -53,8 +53,8 @@ var classesMap = {
 // RUN
 
 var dispatcher = new Dispatcher(sectionsVector, articlesStructure, workflow, classesMap)
-//readLines(fs.createReadStream('./ccp-a.txt', 'utf8'), // uncomment for debug
-readLines(process.stdin.setEncoding('utf8'), // comment for debug
+readLines(fs.createReadStream('./ccp-a.txt', 'utf8'), // uncomment for debug
+//readLines(process.stdin.setEncoding('utf8'), // comment for debug
     dispatcher.parseLine.bind(dispatcher),
     dispatcher.getJSON.bind(dispatcher),
     function(value) { if (value) process.stdout.write(value) }

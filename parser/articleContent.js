@@ -11,7 +11,7 @@ class ArticleContent {
 		if (! type || typeof type !== 'string' || type.isEmpty()) throw new Error(CLNAME + ': type not supplied')
 		this.nr = nr.clean()
 		this.mark = mark
-		textLine = textLine.clean()
+		this.textLine = textLine.clean()
 		this.type = type.clean()
 		this.inner = []
 	}
