@@ -1,28 +1,11 @@
+'use srict'
+
 require('./prototypeExtensions')
 
 var tools = require('./tools')
 
-var types = ['book','part','title','chapter','section','subsection','article']
-
-var headerTypes = []
-headerTypes['book'] = ['livro']
-headerTypes['part'] = ['parte']
-headerTypes['title'] = ['titulo','título']
-headerTypes['chapter'] = ['capitulo','capítulo']
-headerTypes['section'] = ['seccao','secção']
-headerTypes['subsection'] = ['subseccao','subsecção','sub-seccao','sub-secção']
-headerTypes['article'] = ['artigo']
-
-var numberTypes = []
-numberTypes['book'] = tools.isRoman
-numberTypes['part'] = tools.isRoman
-numberTypes['title'] = tools.isRoman
-numberTypes['chapter'] = tools.isRoman
-numberTypes['section'] = tools.isRoman
-numberTypes['subsection'] = tools.isRoman
-numberTypes['article'] = tools.isNumeral
-
 const CLNAME = 'HeaderSection'
+
 class HeaderSection {
 
 	constructor(textLine, type) {

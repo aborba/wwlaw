@@ -1,5 +1,7 @@
-var HeaderSection = require('./headerSection')
-var tools = require('./tools')
+'use srict'
+
+var HeaderSection = require('./headerSection'),
+	tools = require('./tools')
 
 class Part extends HeaderSection {
 	constructor(textLine) {

@@ -1,3 +1,5 @@
+'use srict'
+
 require('./prototypeExtensions')
 
 exports.isRoman = (value) => {
@@ -8,16 +10,6 @@ exports.isRoman = (value) => {
 exports.isNumeral = (value) => {
     if (!value) return false
     return (/\d+\.?[ºª]/).test(value)
-}
-
-// To be replaced by checkType
-exports.isOfType = (value, tokens, isType) => { // "Parte I", ["parte"], isRoman
-if (! value || typeof value !== 'string') return false
-var parts = value.clean().split(' ')
-var tokensLc = typeof tokens === 'string' ? [(tokens.toLowerCase())] : tokens.map(function(val) {return val.toLowerCase(); });
-return parts.length >= 2
-    && tokensLc.contains(parts[0].toLowerCase())
-    && isType(parts[1])
 }
 
 exports.checkType = (value, parameters) => { // "Parte I", {tokens:["parte"], numbering:isRoman}

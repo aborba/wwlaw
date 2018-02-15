@@ -1,8 +1,8 @@
 'use srict'
 
 require('./prototypeExtensions')
-var tools = require('./tools')
-var inspect = require('util').inspect
+var tools = require('./tools'),
+	inspect = require('util').inspect
 var Book = require('./book'),
 	Part = require('./part'),
 	Title = require('./title'),

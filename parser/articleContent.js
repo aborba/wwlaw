@@ -1,10 +1,10 @@
-require('./prototypeExtensions')
+'use srict'
 
+require('./prototypeExtensions')
 var tools = require('./tools')
 
-var types = ['li_1','li_a','li_i']
-
 const CLNAME = 'ArticleContent'
+
 class ArticleContent {
 	constructor(nr, mark, textLine, type) {
 		if (! textLine || typeof textLine !== 'string' || textLine.isEmpty()) throw new Error(CLNAME + ': textLine not supplied')

@@ -1,7 +1,10 @@
-var ArticleContent = require('./articleContent')
-var tools = require('./tools')
+'use srict'
+
+var ArticleContent = require('./articleContent'),
+	tools = require('./tools')
 
 const CLNAME = 'Li_a'
+
 class Li_a extends ArticleContent {
 	constructor(textLine) {
 		if (! textLine || typeof textLine !== 'string') throw new Error(CLNAME + ': textLine not supplied');
