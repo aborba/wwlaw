@@ -4,7 +4,7 @@
 
 if (!String.prototype.startsWith) {
     String.prototype.startsWith = function(term) {
-      return this.substr(0, term.length) === term;
+        return this.substr(0, term.length) === term;
     };
 }
 
