@@ -46,3 +46,13 @@ exports.roman2arabic = (value) => {
 	}
 	return res + M + C + X + I;
 }
+
+var createInstance = function(str) {
+	var arr = str.split(".");
+	var instance = (window || this);
+	for (var i = 0, len = arr.length; i < len; i++)
+		instance = instance[arr[i]];
+	if (typeof instance !== "function")
+		throw new Error("function not found");
+	return instance;
+};
