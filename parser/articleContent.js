@@ -19,6 +19,8 @@ class ArticleContent {
 	getType() { return this.type }
 	getNr() { return this.nr }
 
+	isInArticle() { return true }
+
 	add(obj) {
 		if (!obj) return
 		this.inner.push(obj)

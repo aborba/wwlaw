@@ -13,9 +13,9 @@ class Li_1 extends ArticleContent {
 	}
 }
 
-Li_1.is = (textLine, status, lastTag) => {
+Li_1.matches = (textLine, lastTag) => {
 	if (! textLine) return false
-	if (status === 'article' && lastTag === 'start') return true
+	if (lastTag === 'start') return true
 	return /^\d\s?.\s.*/.test(textLine)
 }
 

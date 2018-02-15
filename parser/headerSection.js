@@ -32,7 +32,7 @@ class HeaderSection {
 		textLine = textLine.clean()
 		var parts = textLine.split(' ', 2)
 		if (parts.length < 2) throw new Error(CLNAME + '/' + this.type + ': ' + 'Invalid parameter textLine')
-		this.type = parts[0]
+		this.header = parts[0]
 		this.nr = parts[1]
 		this.separator = ''
 		var remain = textLine.slice(parts[0].concat(' ').concat(parts[1]).concat(' ').length)
@@ -43,6 +43,10 @@ class HeaderSection {
 
 	getType() { return this.type }
 
+	isPending() { return typeof this.epigraph ? 'epigraph' : undefined }
+
+	isInArticle() { return false }
+
 	add(obj) {
 		if (!obj) return
 		if (typeof obj === 'string') {
@@ -51,6 +55,7 @@ class HeaderSection {
 			this.epigraph = obj
 			return
 		}
+		if (! this.inner) this.inner = []
 		this.inner.push(obj)
 	}
 

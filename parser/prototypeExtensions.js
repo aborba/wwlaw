@@ -22,4 +22,8 @@ if(!String.prototype.isEmpty) {
 
 // ARRAY
 
-Array.prototype.contains = function(obj) {return this.indexOf(obj) > -1 }
+Array.prototype.contains = function(obj) { return this.indexOf(obj) > -1 }
+
+Array.prototype.topRef = function() { return this.length - 1 }
+
+Array.prototype.top = function() { return this[this.length - 1] }

@@ -17,6 +17,8 @@ class Article extends HeaderSection {
 		super.add(obj)
 	}
 	
+	isInArticle() { return true }
+
 }
 
 Article.matches = (textLine) => {
