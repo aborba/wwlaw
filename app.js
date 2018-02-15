@@ -1,6 +1,5 @@
 var fs = require('fs')
 var Dispatcher = require('./parser/dispatcher')
-var filename = './ccp-a.txt'
 var Book = require('./parser/book'),
 	Part = require('./parser/part'),
 	Title = require('./parser/title'),
@@ -63,9 +62,16 @@ var instances = {
     li_i: Li_i,
 }
 
+// RUN
+
 var dispatcher = new Dispatcher(docOrdering, articlesOrdering, workflow, instances)
-readLines(fs.createReadStream(filename, 'utf8'),
+//readLines(fs.createReadStream('./ccp-a.txt', 'utf8'),
+readLines(process.stdin.setEncoding('utf8'),
     dispatcher.parseLine.bind(dispatcher),
     dispatcher.getJSON.bind(dispatcher),
     function(value) { if (value) process.stdout.write(value) }
 )
+
+/*
+cls && node app.js < ccp-a.txt
+ */
