@@ -3,56 +3,56 @@ var Section = require('../../parser/section');
 
 describe('Section', function() {
     
-    var parte = new Section('Parte I', 'Parte')
+    var section = new Section('Secção I')
     
-    describe('#Section("Parte I", "Parte")', function() {
-        it('should return values for "Parte I" and "undefined" for epigraph', function() {
-            assert.equal(parte.layer, 'Parte')
-            assert.equal(parte.type, 'Parte')
-            assert.equal(parte.nr, 'I')
-            assert.equal(typeof parte.epigraph, 'undefined')
+    describe('#Section("Secção I")', function() {
+        it('should return values for "Secção I" and "undefined" for epigraph', function() {
+            assert.equal(section.type, 'section')
+            assert.equal(section.header, 'Secção')
+            assert.equal(section.nr, 'I')
+            assert.equal(typeof section.epigraph, 'undefined')
         })
     })
     
-    var parte2 = new Section('Parte I Epígrafe da parte 1', 'Parte')
+    var section2 = new Section('Secção I Epígrafe da secção 1')
     
-    describe('#Section("Parte I Epígrafe da parte 1", "Parte")', function() {
-        it('should return values for "Parte I Epígrafe da parte 1"', function() {
-            assert.equal(parte2.layer, 'Parte')
-            assert.equal(parte2.type, 'Parte')
-            assert.equal(parte2.nr, 'I')
-            assert.equal(parte2.epigraph, 'Epígrafe da parte 1')
+    describe('#Section("Secção I Epígrafe da secção 1")', function() {
+        it('should return values for "Parte I Epígrafe da secção 1"', function() {
+            assert.equal(section2.type, 'section')
+            assert.equal(section2.header, 'Secção')
+            assert.equal(section2.nr, 'I')
+            assert.equal(section2.epigraph, 'Epígrafe da secção 1')
         })
     })
     
-    var parte3 = new Section('Parte I', 'Parte')
-    parte3.add('Epígrafe da parte 1')
+    var section3 = new Section('Secção I')
+    section3.add('Epígrafe da secção 1')
     
-    describe('#Section("Parte I", "Parte").add("Epígrafe da parte 1")', function() {
-        it('should return values for "Parte I Epígrafe da parte 1"', function() {
-            assert.equal(parte3.layer, 'Parte')
-            assert.equal(parte3.type, 'Parte')
-            assert.equal(parte3.nr, 'I')
-            assert.equal(parte3.epigraph, 'Epígrafe da parte 1')
+    describe('#Section("Secção I").add("Epígrafe da secção 1")', function() {
+        it('should return values for "Parte I Epígrafe da secção 1"', function() {
+            assert.equal(section3.type, 'section')
+            assert.equal(section3.header, 'Secção')
+            assert.equal(section3.nr, 'I')
+            assert.equal(section3.epigraph, 'Epígrafe da secção 1')
         })
     })
-    /*
-    describe('#Parte.is("Parte I")', function() {
-        it('should return true for "Parte I"', function() {
-            assert.equal(Parte.is('Parte I'), true)
-        })
-    })
-    
-    describe('#Parte.is(" paRte ii ")', function() {
-        it('should return true for " paRte ii "', function() {
-            assert.equal(Parte.is(' paRte ii '), true)
+
+    describe('#Section.matches("Secção I")', function() {
+        it('should return true for "Secção I"', function() {
+            assert.equal(Section.matches('Secção I'), true)
         })
     })
     
-    describe('#Parte.is("Parte 1")', function() {
-        it('should return false for "Parte 1"', function() {
-            assert.equal(Parte.is('Parte 1'), false)
+    describe('#Section.matches(" seCÇãO ii ")', function() {
+        it('should return true for " seCÇãO ii "', function() {
+            assert.equal(Section.matches(' seCÇãO ii '), true)
         })
     })
-    */
+    
+    describe('#Section.matches("Secção 1")', function() {
+        it('should return false for "Secção 1"', function() {
+            assert.equal(Section.matches('Secção 1'), false)
+        })
+    })
+
 })
