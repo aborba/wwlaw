@@ -7,12 +7,14 @@
         "type": "node",
         "request": "launch",
         "name": "Launch Program",
-        "program": "${workspaceFolder}/app.js"
+        "program": "${workspaceFolder}/app.js",
+        "console": "internalConsole",
+        "internalConsoleOptions": "openOnFirstSessionStart"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Test with Micha",
             "program": "${workspaceFolder}/test/parser.test.js"
         }
     ]

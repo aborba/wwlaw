@@ -50,8 +50,6 @@ class Dispatcher {
 		if (! line || typeof line !== 'string') throw new Error('invalid line. exiting')
 		line = line.clean()
 		if (line.isEmpty()) return
-		if ((/^Artigo 476.º.*$/).test(line))
-			console.log('STOP HERE')
 		if (this.pending && this.pending.length > 0) {
 			switch (this.pending) {
 				case 'epigraph':
