@@ -103,7 +103,13 @@ class Dispatcher {
 				break
 			}
 		}
-	}
+		if (!this.doc || this.doc.length <= 1) return
+		var baseDocType = this.doc[0].getType()
+		while (this.doc.length > 1 && this.doc.top().getType() !== baseDocType) {
+			var aux = this.doc.pop()
+			this.doc.top().add(aux)
+		}
+}
 
 	getJSON() { return JSON.stringify(this.doc)}
 
