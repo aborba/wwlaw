@@ -1,7 +1,7 @@
 'use strict'
 
 //var fs = require('fs') // uncomment for debug
-var Dispatcher = require('./parser/dispatcher')
+var Dispatcher = require('./dispatcher')
 
 var Book = require('./parser/book'),
 	Part = require('./parser/part'),
@@ -53,7 +53,7 @@ var classesMap = {
 // RUN
 
 var dispatcher = new Dispatcher(sectionsVector, articlesStructure, workflow, classesMap)
-//readLines(fs.createReadStream('./ccp-a.txt', 'utf8'), // uncomment for debug
+//readLines(fs.createReadStream('../ccp-a.txt', 'utf8'), // uncomment for debug
 readLines(process.stdin.setEncoding('utf8'), // comment for debug
     dispatcher.parseLine.bind(dispatcher),
     dispatcher.getJSON.bind(dispatcher),
