@@ -12,6 +12,7 @@ class Li_1 extends ArticleContent {
 		var nr = textLine.replace(/^(\d+)(\s?.\s.*)$/, '$1')
 		var mark = textLine.replace(/^(\d+)(\s?.)(\s.*)$/, '$2')
 		var text = textLine.replace(/^(\d+)(\s?.\s)(.*)$/, '$3')
+		if (mark === nr) nr = mark = ''
 		super(nr, mark, text, 'li_1')
 	}
 }

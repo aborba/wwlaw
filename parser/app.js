@@ -3,16 +3,16 @@
 //var fs = require('fs') // uncomment for debug
 var Dispatcher = require('./dispatcher')
 
-var Book = require('./parser/book'),
-	Part = require('./parser/part'),
-	Title = require('./parser/title'),
-	Chapter = require('./parser/chapter'),
-	Section = require('./parser/section'),
-	Subsection = require('./parser/subsection'),
-	Article = require('./parser/article'),
-	Li_1 = require('./parser/li_1'),
-	Li_a = require('./parser/li_a'),
-	Li_i = require('./parser/li_i')
+var Book = require('./book'),
+	Part = require('./part'),
+	Title = require('./title'),
+	Chapter = require('./chapter'),
+	Section = require('./section'),
+	Subsection = require('./subsection'),
+	Article = require('./article'),
+	Li_1 = require('./li_1'),
+	Li_a = require('./li_a'),
+	Li_i = require('./li_i')
 
 function readLines(input, parse, extract, output) {
     var buffer = ''
@@ -53,7 +53,7 @@ var classesMap = {
 // RUN
 
 var dispatcher = new Dispatcher(sectionsVector, articlesStructure, workflow, classesMap)
-//readLines(fs.createReadStream('../ccp-a.txt', 'utf8'), // uncomment for debug
+//readLines(fs.createReadStream('./ccp-a.txt', 'utf8'), // uncomment for debug
 readLines(process.stdin.setEncoding('utf8'), // comment for debug
     dispatcher.parseLine.bind(dispatcher),
     dispatcher.getJSON.bind(dispatcher),
